@@ -25,4 +25,8 @@
     <string name="search">   Chercher par marque voiture ...</string>
     <string name="rating">4.6</string>
     <string name="speed">240 Km/H</string>
+    <string name="engine">12488 cc</string>
+    <string name="seat"> 5 Seats</string>
+    <string name="bhp">81.8 BHP</string>
+    <string name="book">Reserver</string>
 </resources>
