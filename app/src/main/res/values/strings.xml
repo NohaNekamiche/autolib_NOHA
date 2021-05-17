@@ -29,4 +29,16 @@
     <string name="seat"> 5 Seats</string>
     <string name="bhp">81.8 BHP</string>
     <string name="book">Reserver</string>
+    <string name="price_jr">8000 DA/Jr</string>
+    <string name="price_hr">4000 DA/Hr</string>
+    <string name="carburant">Type de Carburant </string>
+    <string name="moteur">Cylindrée du moteur</string>
+    <string name="type_fuel">Diesel</string>
+    <string name="engine_val">1248 cc</string>
+    <string name="vitesse">Vitesse</string>
+    <string name="moteur_car">Moteur</string>
+    <string name="places">Places</string>
+    <string name="bh">BHP</string>
+    <string name="overview">Voiture Details</string>
+    <string name="spec">Specifications</string>
 </resources>
