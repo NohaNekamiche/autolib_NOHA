@@ -1,15 +1,13 @@
-package com.clovertech.autolibdz.ui.home
+package com.clovertech.autolibdz.ui.listcars
 
-import android.widget.ArrayAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.clovertech.autolibdz.R
 
-class HomeViewModel : ViewModel() {
+class ListCarsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "This is facture Fragment"
     }
     val text: LiveData<String> = _text
 }
