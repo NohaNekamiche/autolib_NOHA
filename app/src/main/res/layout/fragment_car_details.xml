@@ -113,7 +113,12 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="30dp"
-                android:src="@drawable/car_pic" />
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_baseline_speed_24" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rating"/>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView

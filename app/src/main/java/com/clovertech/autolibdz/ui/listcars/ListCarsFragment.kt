@@ -41,10 +41,11 @@ class ListCarsFragment : Fragment() {
 
         val data = mutableListOf<Car>()
         data.add(Car(4000.0,"VOLKSWAGEN POLO",12555,R.drawable.car_pic))
-        data.add(Car(5000.5,"VOLKSWAGEN POLO6",14222,R.drawable.car_r))
         data.add(Car(4000.0,"VOLKSWAGEN POLO",12555,R.drawable.car_2))
-        data.add(Car(4000.0,"VOLKSWAGEN POLO",12555,R.drawable.car_pic))
+
+
         data.add(Car(5000.5,"VOLKSWAGEN POLO6",14222,R.drawable.car_r))
+
         data.add(Car(4000.0,"VOLKSWAGEN POLO",12555,R.drawable.car_2))
         data.add(Car(4000.0,"VOLKSWAGEN POLO",12555,R.drawable.car_pic))
         data.add(Car(5000.5,"VOLKSWAGEN POLO6",14222,R.drawable.car_r))

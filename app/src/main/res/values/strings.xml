@@ -24,4 +24,5 @@
     <string name="detrails">Details</string>
     <string name="search">   Chercher par marque voiture ...</string>
     <string name="rating">4.6</string>
+    <string name="speed">240 Km/H</string>
 </resources>
