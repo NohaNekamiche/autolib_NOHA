@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.clovertech.autolibdz.R
 import com.clovertech.autolibdz.ui.listcars.ListCarsViewModel
@@ -31,11 +34,26 @@ class CarDetailsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val id=arguments?.getString("id")
-        car.text=arguments?.getString("model")
-        Glide.with(context).load(arguments?.getString("img")).into(img_car)
+        val model=arguments?.getString("model")
+        car.text=model
+        val img=arguments?.getString("img")
+        Glide.with(context).load(img).into(img_car)
         val uni_hr=arguments?.getString("hr")
         val uni_jr=arguments?.getString("jr")
-        button.setOnClickListener {  }
+        price_hr.text= arguments?.getInt("hr",0).toString()+"DA/Hr"
+        price_jr.text=arguments?.getInt("jr",0).toString()+"DA/jr"
+        Toast.makeText(
+            activity,
+            "prix: ${uni_hr}",
+
+            Toast.LENGTH_LONG
+        ).show()
+        button.setOnClickListener {view->
+            val bundle = bundleOf("id" to id,"img" to img,"model" to model, "hr" to uni_hr, "jr" to uni_jr)
+            view?.findNavController()?.navigate(R.id.action_nav_listcar_to_nav_slideshow,bundle)
+
+
+        }
     }
 
 }

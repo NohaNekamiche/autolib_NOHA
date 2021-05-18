@@ -90,7 +90,7 @@
         app:layout_constraintTop_toBottomOf="@+id/titre"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
+    <Spinner
         android:id="@+id/card_choix"
         android:layout_width="300dp"
         android:layout_height="40dp"
@@ -101,7 +101,7 @@
         android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
         app:layout_constraintTop_toBottomOf="@+id/descrpt" />
 
-    <TextView
+    <Spinner
         android:id="@+id/type"
         android:layout_width="300dp"
         android:layout_height="40dp"
@@ -140,19 +140,6 @@
         app:layout_constraintStart_toEndOf="@+id/duree"
         app:layout_constraintTop_toBottomOf="@+id/type"
         app:srcCompat="@drawable/ic_plus" />
-
-    <ImageView
-        android:id="@+id/check"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.892"
-        app:srcCompat="@drawable/ic_baseline_check_box_outline_blank_24" />
 
     <ImageView
         android:id="@+id/moins"
@@ -256,4 +243,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/duration"
         app:layout_constraintVertical_bias="0.009" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="616dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        android:buttonTint="@color/yellow"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

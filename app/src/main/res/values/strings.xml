@@ -41,4 +41,12 @@
     <string name="bh">BHP</string>
     <string name="overview">Voiture Details</string>
     <string name="spec">Specifications</string>
+    <string-array name="typepaiement">
+        <item>Jour</item>
+        <item>Heure</item>
+    </string-array>
+    <string-array name="type_card">
+        <item>Carte Crédit</item>
+        <item>Carte D'abonement</item>
+    </string-array>
 </resources>

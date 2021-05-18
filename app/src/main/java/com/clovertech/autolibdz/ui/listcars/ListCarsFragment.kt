@@ -46,64 +46,7 @@ class ListCarsFragment : Fragment() {
         }
 
     }
-    fun loadData():List<Vehicle>{
-      //  executeCall()
-        val data = mutableListOf<Vehicle>()
-      /*  data.add(Car(4000.0,"VOLKSWAGEN POLO",12555,R.drawable.car_pic))
-        data.add(Car(4000.0,"VOLKSWAGEN POLO",12555,R.drawable.car_2))
 
-
-        data.add(Car(5000.5,"VOLKSWAGEN POLO6",14222,R.drawable.car_r))
-
-        data.add(Car(4000.0,"VOLKSWAGEN POLO",12555,R.drawable.car_2))
-        data.add(Car(4000.0,"VOLKSWAGEN POLO",12555,R.drawable.car_pic))
-        data.add(Car(5000.5,"VOLKSWAGEN POLO6",14222,R.drawable.car_r))
-        data.add(Car(4000.0,"VOLKSWAGEN POLO",12555,R.drawable.car_2))
-        data.add(Car(4000.0,"VOLKSWAGEN POLO",12555,R.drawable.car_pic))
-        data.add(Car(5000.5,"VOLKSWAGEN POLO6",14222,R.drawable.car_r))
-        data.add(Car(4000.0,"VOLKSWAGEN POLO",12555,R.drawable.car_2))*/
-        data.add(Vehicle(7, "Convertible","MITSUBISHI ECLIPSE GT SPYDER CONVERTIBLE 2009\n",
-            "available",100,
-            100,
-
-        "MITSUBISHI ",
-
-        "https://s3-alpha-sig.figma.com/img/9269/55d5/591f35085934ef6a48001529bb53130a?Expires=1621814400&Signature=PgirQB91Lfbnuqy46IkaPm2sEC5S38dn~3PW-GUUomT3Kg55IZMez-Sa73ihlY2a9YZOdB8F0XPvAJ6MSi95gRGxN7NwBC-W1xJsIPrWyviDwNwTms-PHfdIRkyWO92~XAPuyWIeKJPvkdBd8teLuxHBtCWT31wxONqm-9jFTaiZk-JsccKg0yopCC-sNFsus-otdKW5a2QQt2YtuiXR5NpusOMqoNfy2TfoYDTYxU8pJmAXuwOYBEvcFDxwK7JQMDQq73TxVm16co24bespeypCDJudhd2k9nrm2UHo8PIkUFhclVCT86P-Yld5PlQcRoELKeSn9h6eCK1fjs6WIA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-    ))
-        data.add(Vehicle(7, "Convertible","MITSUBISHI ECLIPSE GT SPYDER CONVERTIBLE 2009\n",
-            "available",100,
-            100,
-
-            "MITSUBISHI ",
-
-            "https://s3-alpha-sig.figma.com/img/9269/55d5/591f35085934ef6a48001529bb53130a?Expires=1621814400&Signature=PgirQB91Lfbnuqy46IkaPm2sEC5S38dn~3PW-GUUomT3Kg55IZMez-Sa73ihlY2a9YZOdB8F0XPvAJ6MSi95gRGxN7NwBC-W1xJsIPrWyviDwNwTms-PHfdIRkyWO92~XAPuyWIeKJPvkdBd8teLuxHBtCWT31wxONqm-9jFTaiZk-JsccKg0yopCC-sNFsus-otdKW5a2QQt2YtuiXR5NpusOMqoNfy2TfoYDTYxU8pJmAXuwOYBEvcFDxwK7JQMDQq73TxVm16co24bespeypCDJudhd2k9nrm2UHo8PIkUFhclVCT86P-Yld5PlQcRoELKeSn9h6eCK1fjs6WIA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-        ))
-        data.add(Vehicle(7, "Convertible","MITSUBISHI ECLIPSE GT SPYDER CONVERTIBLE 2009\n",
-            "available",100,
-            100,
-
-            "MITSUBISHI ",
-
-            "https://s3-alpha-sig.figma.com/img/9269/55d5/591f35085934ef6a48001529bb53130a?Expires=1621814400&Signature=PgirQB91Lfbnuqy46IkaPm2sEC5S38dn~3PW-GUUomT3Kg55IZMez-Sa73ihlY2a9YZOdB8F0XPvAJ6MSi95gRGxN7NwBC-W1xJsIPrWyviDwNwTms-PHfdIRkyWO92~XAPuyWIeKJPvkdBd8teLuxHBtCWT31wxONqm-9jFTaiZk-JsccKg0yopCC-sNFsus-otdKW5a2QQt2YtuiXR5NpusOMqoNfy2TfoYDTYxU8pJmAXuwOYBEvcFDxwK7JQMDQq73TxVm16co24bespeypCDJudhd2k9nrm2UHo8PIkUFhclVCT86P-Yld5PlQcRoELKeSn9h6eCK1fjs6WIA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-        ))
-        data.add(Vehicle(7, "Convertible","MITSUBISHI ECLIPSE GT SPYDER CONVERTIBLE 2009\n",
-            "available",100,
-            100,
-
-            "MITSUBISHI ",
-
-            "https://s3-alpha-sig.figma.com/img/9269/55d5/591f35085934ef6a48001529bb53130a?Expires=1621814400&Signature=PgirQB91Lfbnuqy46IkaPm2sEC5S38dn~3PW-GUUomT3Kg55IZMez-Sa73ihlY2a9YZOdB8F0XPvAJ6MSi95gRGxN7NwBC-W1xJsIPrWyviDwNwTms-PHfdIRkyWO92~XAPuyWIeKJPvkdBd8teLuxHBtCWT31wxONqm-9jFTaiZk-JsccKg0yopCC-sNFsus-otdKW5a2QQt2YtuiXR5NpusOMqoNfy2TfoYDTYxU8pJmAXuwOYBEvcFDxwK7JQMDQq73TxVm16co24bespeypCDJudhd2k9nrm2UHo8PIkUFhclVCT86P-Yld5PlQcRoELKeSn9h6eCK1fjs6WIA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-        ))
-        data.add(Vehicle(7, "Convertible","MITSUBISHI ECLIPSE GT SPYDER CONVERTIBLE 2009\n",
-            "available",100,
-            100,
-
-            "MITSUBISHI ",
-
-            "https://s3-alpha-sig.figma.com/img/9269/55d5/591f35085934ef6a48001529bb53130a?Expires=1621814400&Signature=PgirQB91Lfbnuqy46IkaPm2sEC5S38dn~3PW-GUUomT3Kg55IZMez-Sa73ihlY2a9YZOdB8F0XPvAJ6MSi95gRGxN7NwBC-W1xJsIPrWyviDwNwTms-PHfdIRkyWO92~XAPuyWIeKJPvkdBd8teLuxHBtCWT31wxONqm-9jFTaiZk-JsccKg0yopCC-sNFsus-otdKW5a2QQt2YtuiXR5NpusOMqoNfy2TfoYDTYxU8pJmAXuwOYBEvcFDxwK7JQMDQq73TxVm16co24bespeypCDJudhd2k9nrm2UHo8PIkUFhclVCT86P-Yld5PlQcRoELKeSn9h6eCK1fjs6WIA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-        ))
-        return data
-    }
     private fun executeCall():List<Vehicle>{
         var data = mutableListOf<Vehicle>()
         AsyncTask.execute(){
