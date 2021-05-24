@@ -45,8 +45,22 @@
         <item>Jour</item>
         <item>Heure</item>
     </string-array>
-    <string-array name="type_card">
-        <item>Carte Crédit</item>
-        <item>Carte D'abonement</item>
-    </string-array>
+    <string name="menu_facture">Mes factures</string>
+    <string name="menu_card">Mes cartes</string>
+    <string name="choose_card">Choose your card</string>
+    <string name="id_facture">ID Facture</string>
+    <string name="date">Date</string>
+    <string name="Lieu">Lieu</string>
+    <string name="add_card">Add Card</string>
+    <string name="card_num">Card number</string>
+    <string name="exp">Expiry</string>
+    <string name="mm">MM</string>
+    <string name="yy">YY</string>
+    <string name="sec_code">Security Code</string>
+    <string name="lamia">Selmane Lamia</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

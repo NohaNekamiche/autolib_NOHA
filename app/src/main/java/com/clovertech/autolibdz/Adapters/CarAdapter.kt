@@ -1,7 +1,6 @@
 package com.clovertech.autolibdz.Adapters
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,15 +8,16 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.os.bundleOf
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.clovertech.autolibdz.DataClasses.Vehicle
 import com.clovertech.autolibdz.R
-import com.clovertech.autolibdz.ui.cardetails.CarDetailsFragment
 
+private var mylist= emptyList<Vehicle>()
 
-class MyAdapter(val context: Context, var data: List<Vehicle>): RecyclerView.Adapter<MyViewHolder>(){
+class MyAdapter(val context: Context, var data: MutableLiveData<Vehicle>): RecyclerView.Adapter<MyViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(LayoutInflater.from(context).inflate(R.layout.car_elt, parent, false))
     }
@@ -31,13 +31,14 @@ class MyAdapter(val context: Context, var data: List<Vehicle>): RecyclerView.Ada
         holder.prix.text= data[position].unitpriceperhour.toString()+"DA/Hr"
         val car=data[position]
         holder.details.setOnClickListener { view->
-
             val  id=data[position].idVehicle
             val  img=data[position].image
             val  uni_hr=data[position].unitpriceperhour
             val  uni_jr=data[position].unitpriceperday
             val  model=data[position].vehiclemodel
-            val bundle = bundleOf("id" to id,"img" to img,"model" to model, "hr" to uni_hr, "jr" to uni_jr)
+            val vehiclebrand=data[position].vehiclebrand
+            val bundle = bundleOf("id" to id,"img" to img,"model" to model, "hr" to uni_hr, "jr" to uni_jr ,
+            "brand" to vehiclebrand)
             view?.findNavController()?.navigate(R.id.action_nav_home_to_nav_listcar,bundle)
 
 
@@ -62,9 +63,6 @@ class MyAdapter(val context: Context, var data: List<Vehicle>): RecyclerView.Ada
 
 }
 
-private fun ImageView.setImageResource(image: String) {
-
-}
 
 
 class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -83,3 +81,8 @@ class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             .commit()
 }
 */
+fun setData(newList :List<Vehicle>){
+mylist=newList
+
+
+}

@@ -1,10 +1,7 @@
 package com.clovertech.autolibdz.DataClasses
 
-import java.sql.Time
-import java.time.format.DateTimeFormatter
-import java.util.*
+data class Rental(
 
-data class Rental (
     val idRental:Int,
     val idVehicle:Int,
     val rentaldate:String,
@@ -12,7 +9,7 @@ data class Rental (
     val plannedrestitutiondate:String,
     val plannedrestitutiontime:String,
     val restitutionDate:String,
-    val restitutionTime:Time,
+    val restitutionTime: String,
     val rentalType:String,
     val iddepartborne:Int,
     val iddestborne:Int,

@@ -76,30 +76,58 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.893" />
 
-    <TextView
-        android:id="@+id/descrpt"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="508dp"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray"
+        android:orientation="horizontal"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.184">
+
+        <ImageView
+            android:id="@+id/img_v"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/car_pic" />
+
+        <TextView
+            android:id="@+id/model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:text="@string/car"
+            android:textColor="@color/gray"
+            android:textStyle="bold" />
+
+        <TextView
+
+            android:id="@+id/brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/car" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/card_choix"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:background="@drawable/input"
+        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titre"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Spinner
-        android:id="@+id/card_choix"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/input"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-        app:layout_constraintTop_toBottomOf="@+id/descrpt" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.308" />
 
     <Spinner
         android:id="@+id/type"
@@ -117,23 +145,24 @@
         android:id="@+id/duree"
         android:layout_width="115dp"
         android:layout_height="50dp"
-        android:layout_marginTop="330dp"
         android:layout_marginEnd="80dp"
         android:background="@drawable/input"
         android:ems="10"
         android:inputType="number"
         android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.983"
         app:layout_constraintStart_toEndOf="@+id/duration"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.483" />
 
     <ImageView
         android:id="@+id/plus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="52dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -145,7 +174,7 @@
         android:id="@+id/moins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.806"
@@ -190,7 +219,7 @@
         app:layout_constraintHorizontal_bias="0.178"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.592" />
+        app:layout_constraintVertical_bias="0.563" />
 
     <TextView
         android:id="@+id/total"
@@ -207,7 +236,7 @@
         app:layout_constraintHorizontal_bias="0.201"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.649" />
+        app:layout_constraintVertical_bias="0.619" />
 
     <Button
         android:id="@+id/pay"
@@ -217,14 +246,15 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="105dp"
 
+        android:background="@drawable/button_bgr2"
         android:text="@string/pay"
         android:textColor="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toEndOf="@+id/total"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.582" />
+        app:layout_constraintVertical_bias="0.545" />
 
     <Button
         android:id="@+id/code"
@@ -237,7 +267,7 @@
         android:textColor="@color/gray"
 
         app:layout_constraintBottom_toBottomOf="parent"
-
+android:background="@drawable/button_bgr2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -248,10 +278,11 @@
         android:id="@+id/checkBox"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="616dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="parent"
         android:buttonTint="@color/yellow"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.925" />
 </androidx.constraintlayout.widget.ConstraintLayout>

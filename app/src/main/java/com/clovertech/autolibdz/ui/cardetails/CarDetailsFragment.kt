@@ -40,16 +40,13 @@ class CarDetailsFragment : Fragment() {
         Glide.with(context).load(img).into(img_car)
         val uni_hr=arguments?.getString("hr")
         val uni_jr=arguments?.getString("jr")
+        val brand=arguments?.getString("brand")
         price_hr.text= arguments?.getInt("hr",0).toString()+"DA/Hr"
         price_jr.text=arguments?.getInt("jr",0).toString()+"DA/jr"
-        Toast.makeText(
-            activity,
-            "prix: ${uni_hr}",
 
-            Toast.LENGTH_LONG
-        ).show()
         button.setOnClickListener {view->
-            val bundle = bundleOf("id" to id,"img" to img,"model" to model, "hr" to uni_hr, "jr" to uni_jr)
+            val bundle = bundleOf("id" to id,"img" to img,"model" to model, "hr" to uni_hr, "jr" to uni_jr,
+            "brand" to brand)
             view?.findNavController()?.navigate(R.id.action_nav_listcar_to_nav_slideshow,bundle)
 
 
