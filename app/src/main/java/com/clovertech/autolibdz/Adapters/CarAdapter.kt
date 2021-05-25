@@ -17,11 +17,15 @@ import com.clovertech.autolibdz.R
 
 private var mylist= emptyList<Vehicle>()
 
-class MyAdapter(val context: Context, var data: MutableLiveData<Vehicle>): RecyclerView.Adapter<MyViewHolder>(){
+class MyAdapter(val context: Context): RecyclerView.Adapter<MyViewHolder>(){
+    var data= mutableListOf<Vehicle>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(LayoutInflater.from(context).inflate(R.layout.car_elt, parent, false))
     }
-
+    fun setCarsList(cars: List<Vehicle>) {
+        this.data = cars.toMutableList()
+        notifyDataSetChanged()
+    }
     override fun getItemCount()=data.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {

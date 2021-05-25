@@ -16,6 +16,11 @@ import com.clovertech.autolibdz.ui.cardetails.CarDetailsFragment
 
 
 class MyCarAdapter(val context: Context, var data: List<Vehicle>): RecyclerView.Adapter<MyHolder>(){
+
+    fun setCarList(cars:List<Vehicle>){
+        this.data=cars.toMutableList()
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         return MyHolder(LayoutInflater.from(context).inflate(R.layout.car_elt, parent, false))
     }
@@ -61,6 +66,8 @@ class MyHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 
 }
+
+
 /*private fun replaceFragment(fragment: Fragment) {
     supportFragmentManager
             .beginTransaction()
