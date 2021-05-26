@@ -8,10 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.clovertech.autolibdz.APIs.ApiClientCards
+import com.clovertech.autolibdz.APIs.CardsApi
+import com.clovertech.autolibdz.Adapters.MyCarAdapter
 import com.clovertech.autolibdz.R
+import com.clovertech.autolibdz.ViewModel.ViewModelCards
+import com.clovertech.autolibdz.ViewModel.ViewModelCardsFactory
+import com.clovertech.autolibdz.ViewModel.ViewModelCars
+import com.clovertech.autolibdz.ViewModel.ViewModelCarsFactory
+import com.clovertech.autolibdz.repository.CardsRepository
 import kotlinx.android.synthetic.main.fragment_card.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,7 +30,8 @@ class CardFragment : Fragment() {
 
 
     private lateinit var cardViewModel: CardViewModel
-
+    private lateinit var viewModel: ViewModelCards
+    private lateinit var cardFactory:ViewModelCardsFactory
 
     override fun onCreateView(
 
@@ -43,11 +52,23 @@ class CardFragment : Fragment() {
 
 
         val add_card_fragment = AddCardFragment()
-       val fragmentManager = (activity as FragmentActivity).supportFragmentManager
-        list_card.apply {
+        val fragmentManager = (activity as FragmentActivity).supportFragmentManager
+       /* list_card.apply {
             list_card.layoutManager = LinearLayoutManager(activity)
             list_card.adapter = CardAdapter(context,executeCall())
-        }
+        }*/
+        val cardApi=CardsApi()
+        val repository=CardsRepository(cardApi)
+        cardFactory=ViewModelCardsFactory(repository)
+        viewModel=ViewModelProvider(this,cardFactory).get(ViewModelCards::class.java)
+        viewModel.getCards()
+        viewModel.userCards.observe(viewLifecycleOwner, Observer { cardsList->
+            list_card.also {
+                it.layoutManager=LinearLayoutManager(requireContext())
+                it.setHasFixedSize(true)
+                it.adapter= CardAdapter(requireContext(),cardsList)
+            }
+        })
         add_card.setOnClickListener {
             add_card_fragment.show(fragmentManager,"add_card_fragment")
         }

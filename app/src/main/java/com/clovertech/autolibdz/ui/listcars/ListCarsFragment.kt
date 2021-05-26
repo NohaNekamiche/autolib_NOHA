@@ -1,33 +1,25 @@
 package com.clovertech.autolibdz.ui.listcars
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.clovertech.autolibdz.APIs.ApiClientCars
 import com.clovertech.autolibdz.APIs.CarsApi
-import com.clovertech.autolibdz.Adapters.MyAdapter
 import com.clovertech.autolibdz.Adapters.MyCarAdapter
 import com.clovertech.autolibdz.DataClasses.Vehicle
 import com.clovertech.autolibdz.R
 import com.clovertech.autolibdz.ViewModel.ViewModelCars
 import com.clovertech.autolibdz.ViewModel.ViewModelCarsFactory
 import com.clovertech.autolibdz.repository.CarsRepository
-import com.clovertech.autolibdz.repository.Repository
 import kotlinx.android.synthetic.main.fragment_list_car.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.util.concurrent.Executors
 
 class ListCarsFragment : Fragment() {
 
@@ -49,10 +41,10 @@ class ListCarsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        var data = mutableListOf<Vehicle>()
+
         val carsApi=CarsApi()
         val repository=CarsRepository(carsApi)
-        val adapter= MyAdapter(requireActivity())
+
 
         CoroutineScope(Dispatchers.Main).launch{
             val response=repository.getCarsByStat("available")

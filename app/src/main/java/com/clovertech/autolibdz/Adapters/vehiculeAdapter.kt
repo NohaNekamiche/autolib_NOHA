@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.clovertech.autolibdz.DataClasses.Vehicle
@@ -28,11 +30,25 @@ class MyCarAdapter(val context: Context, var data: List<Vehicle>): RecyclerView.
     override fun getItemCount()=data.size
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        //Glide.with(context).load(data[position].image).into(holder.img);
+        Glide.with(context).load(data[position].image).into(holder.img);
 
         holder.marque.text=data[position].vehiclemodel
         holder.prix.text= data[position].unitpriceperhour.toString()+"DA/Hr"
+
+
+        holder.details.setOnClickListener { v->
         val car=data[position]
+        val  id=data[position].idVehicle
+        val  img=data[position].image
+        val  uni_hr=data[position].unitpriceperhour
+        val  uni_jr=data[position].unitpriceperday
+        val  model=data[position].vehiclemodel
+        val vehiclebrand=data[position].vehiclebrand
+        val bundle = bundleOf("id" to id,"img" to img,"model" to model, "hr" to uni_hr, "jr" to uni_jr ,
+            "brand" to vehiclebrand)
+        v?.findNavController()?.navigate(R.id.action_nav_home_to_nav_listcar,bundle)
+        }
+
         /*  holder.details.setOnClickListener { v->
            //  val carDetailfragment = CarDetailsFragment()
               //replaceFragment(carDetailfragment)

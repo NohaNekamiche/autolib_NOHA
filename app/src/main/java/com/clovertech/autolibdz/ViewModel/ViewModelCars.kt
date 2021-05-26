@@ -26,13 +26,7 @@ class ViewModelCars (private val repository: CarsRepository): ViewModel() {
         /*val carsByStat=repository.getCarsByStat(Status)
         this.myResponse.value=carsByStat*/
     }
-    fun getCarsByStatus(Status :String) {
-        viewModelScope.launch {
-            //val response: Response<Vehicle> = repository.getCarsListByState(Status)
-        //    myResponse.value=response
-
-        }
-    }
+   
 
     override fun onCleared() {
         super.onCleared()
