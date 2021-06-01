@@ -130,7 +130,7 @@
         app:layout_constraintVertical_bias="0.308" />
 
     <Spinner
-        android:id="@+id/type"
+        android:id="@+id/type_spinner"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginTop="12dp"
@@ -149,6 +149,7 @@
         android:background="@drawable/input"
         android:ems="10"
         android:inputType="number"
+        android:text="0"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

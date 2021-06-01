@@ -11,14 +11,10 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.clovertech.autolibdz.APIs.ApiClientCards
 import com.clovertech.autolibdz.APIs.CardsApi
-import com.clovertech.autolibdz.Adapters.MyCarAdapter
 import com.clovertech.autolibdz.R
 import com.clovertech.autolibdz.ViewModel.ViewModelCards
 import com.clovertech.autolibdz.ViewModel.ViewModelCardsFactory
-import com.clovertech.autolibdz.ViewModel.ViewModelCars
-import com.clovertech.autolibdz.ViewModel.ViewModelCarsFactory
 import com.clovertech.autolibdz.repository.CardsRepository
 import kotlinx.android.synthetic.main.fragment_card.*
 import kotlinx.coroutines.CoroutineScope
@@ -75,47 +71,5 @@ class CardFragment : Fragment() {
 
 
     }
-    private fun executeCall():List<Card>{
-        var data = mutableListOf<Card>()
-        AsyncTask.execute(){
-            CoroutineScope(Dispatchers.Main).launch {
 
-                try {
-                    val response = ApiClientCards.apiService.getAllCards()
-
-                    if (response.isSuccessful && response.body() != null) {
-                        val content = response.body()
-                        if (content != null) {
-                            for (v in content){
-                                data.add(v)
-                            }
-                            //data=content
-                            Toast.makeText(
-                                    activity,
-                                    "prix: ${content[0].paymentId}",
-
-                                    Toast.LENGTH_LONG
-                            ).show()
-                        }
-
-                    } else {
-                        Toast.makeText(
-                                activity,
-                                "Error Occurred: ${response.message()}",
-                                Toast.LENGTH_LONG
-                        ).show()
-                    }
-
-                } catch (e: Exception) {
-                    Toast.makeText(
-                            activity,
-                            "Error Occurred: ${e.message}",
-                            Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
-        }
-        return  data
-
-    }
 }
