@@ -25,7 +25,11 @@
         android:id="@+id/nav_slideshow"
         android:name="com.clovertech.autolibdz.ui.tarification.TarificationFragment"
         tools:layout="@layout/tarification"
-        android:label="Tarification de reservation"/>
+        android:label="Tarification de reservation">
+        <action
+            android:id="@+id/action_nav_slideshow_to_nav_card"
+            app:destination="@id/nav_card" />
+    </fragment>
     <fragment
         android:id="@+id/nav_listcar"
         android:name="com.clovertech.autolibdz.ui.cardetails.CarDetailsFragment"
@@ -45,5 +49,10 @@
         android:name="com.clovertech.autolibdz.ui.card.CardFragment"
         android:label="@string/menu_card"
         tools:layout="@layout/fragment_card" />
+    <fragment
+        android:id="@+id/nav_sub"
+        android:name="com.clovertech.autolibdz.ui.subscription.SubscriptionFragment"
+        android:label="fragment_subscription"
+        tools:layout="@layout/fragment_subscription" />
 
 </navigation>

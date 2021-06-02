@@ -1,6 +1,5 @@
 package com.clovertech.autolibdz.ui.card
 
-import android.os.AsyncTask
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,14 +11,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.clovertech.autolibdz.APIs.CardsApi
+import com.clovertech.autolibdz.DataClass.paymentInfo
 import com.clovertech.autolibdz.R
 import com.clovertech.autolibdz.ViewModel.ViewModelCards
 import com.clovertech.autolibdz.ViewModel.ViewModelCardsFactory
 import com.clovertech.autolibdz.repository.CardsRepository
 import kotlinx.android.synthetic.main.fragment_card.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 
 class CardFragment : Fragment() {
@@ -46,8 +43,11 @@ class CardFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
+        val amount=arguments?.getInt("total").toString()
+        val id=arguments?.getInt("idrental").toString()
         val add_card_fragment = AddCardFragment()
+        Toast.makeText(context,amount, Toast.LENGTH_LONG).show()
+       // Toast.makeText(context,id, Toast.LENGTH_LONG).show()
         val fragmentManager = (activity as FragmentActivity).supportFragmentManager
        /* list_card.apply {
             list_card.layoutManager = LinearLayoutManager(activity)
@@ -62,7 +62,7 @@ class CardFragment : Fragment() {
             list_card.also {
                 it.layoutManager=LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                it.adapter= CardAdapter(requireContext(),cardsList)
+                it.adapter= CardAdapter(requireContext(),cardsList,fragmentManager,amount,id)
             }
         })
         add_card.setOnClickListener {

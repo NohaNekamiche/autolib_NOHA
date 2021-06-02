@@ -6,27 +6,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.clovertech.autolibdz.DataClass.Adress
-import com.clovertech.autolibdz.DataClass.PaymentMethod
+import com.clovertech.autolibdz.DataClass.Pay
 import com.clovertech.autolibdz.R
 import com.clovertech.autolibdz.ViewModel.MainViewModel
 import com.clovertech.autolibdz.ViewModel.MainViewModelFactory
-import com.clovertech.autolibdz.repository.CardsRepository
 import com.clovertech.autolibdz.repository.PaymentRepository
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_add_card.*
+import kotlinx.android.synthetic.main.fragment_add_card.close
+import kotlinx.android.synthetic.main.fragment_confirm_pay.*
 
-class AddCardFragment : BottomSheetDialogFragment () {
+class ConfirmPayFragment : BottomSheetDialogFragment() {
+
+
     private lateinit var viewModel : MainViewModel
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_add_card,container,false)
+        return inflater.inflate(R.layout.fragment_confirm_pay,container,false)
 
     }
 
@@ -36,52 +38,25 @@ class AddCardFragment : BottomSheetDialogFragment () {
         close.setOnClickListener{
             this.dismiss()
         }
+        cancel.setOnClickListener{
+            this.dismiss()
+        }
+        last4.setText("xxx xxxx "+arguments?.getString("last4").toString())
         val repository = PaymentRepository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this,viewModelFactory)
                 .get(MainViewModel::class.java)
+        confirm.setOnClickListener{
+            val paymentId=arguments?.getString("paymentId").toString()
+            val amount= arguments?.getString("amount").toString()
+            val idRental= arguments?.getString("idRental").toString()
+            val type=arguments?.getString("type").toString()
+            println("paymentId is"+paymentId)
+            Toast.makeText(context,amount,Toast.LENGTH_LONG).show()
+            val pay = Pay(paymentId,amount,idRental,type)
 
-        add_card_conf.setOnClickListener {
-
-            val number= card_number.text.toString()
-            val exp_month=mois_exp.text.toString()
-            val exp_year= year_exp.text.toString()
-            val cvc= sec_code.text.toString()
-            val nom=nom.text.toString()
-            val prenom=prenom.text.toString()
-            val name =nom+" "+prenom
-            if (number.isEmpty())
-            {
-                Toast.makeText(context,"Please enter a card number", Toast.LENGTH_SHORT).show()
-            }
-            else if (exp_month.isEmpty()){
-                Toast.makeText(context,"Please enter an expiry month date", Toast.LENGTH_SHORT).show()
-
-            }
-            else if (exp_year.isEmpty()){
-                Toast.makeText(context,"Please enter an expiry year date", Toast.LENGTH_SHORT).show()
-
-            }
-            else if (cvc.isEmpty()){
-                Toast.makeText(context,"Please enter a security number", Toast.LENGTH_SHORT).show()
-
-            }
-            else if (nom.isEmpty()){
-                Toast.makeText(context,"Please enter a family name", Toast.LENGTH_SHORT).show()
-
-            }
-            else if (prenom.isEmpty()){
-                Toast.makeText(context,"Please enter an first name", Toast.LENGTH_SHORT).show()
-
-            }
-
-
-            val paymentMethod = PaymentMethod(CardRequest(number,exp_month,exp_year,cvc), Adress("Algiers","Algeria",
-                    "line1","16000"),"Lamia"+" "+"Selmane")
-
-
-            viewModel.pushCard(paymentMethod)
-            viewModel.AddCardResponse.observe(viewLifecycleOwner, Observer { response ->
+            viewModel.pay(pay)
+            viewModel.PayResponse.observe(viewLifecycleOwner, Observer { response ->
                 if (response.isSuccessful) {
                     Log.e("Push", (response.body().toString()))
                     Log.e("Push", response.code().toString())
@@ -90,11 +65,11 @@ class AddCardFragment : BottomSheetDialogFragment () {
                     Log.e("push",response.errorBody().toString())
                     Log.e("push",response.toString())
                     Log.e("push",response.raw().toString())
-
+                    this.dismiss()
 
                     Toast.makeText(
                             context,
-                            "Card Added sucessfully",
+                            "Payment process successful yaay",
                             Toast.LENGTH_SHORT
                     ).show()
 
@@ -111,11 +86,10 @@ class AddCardFragment : BottomSheetDialogFragment () {
                     ).show()
                 }
             })
-
-
-
         }
 
+
     }
+
 
 }

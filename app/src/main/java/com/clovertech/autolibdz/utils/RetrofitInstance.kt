@@ -1,6 +1,9 @@
 package com.clovertech.autolibdz.utils
 
+import com.clovertech.autolibdz.APIs.CardsApi
+import com.clovertech.autolibdz.APIs.PayApi
 import com.clovertech.autolibdz.APIs.RentalApi
+import com.clovertech.autolibdz.utils.Constants.Companion.CARD_BASE_URL
 import com.clovertech.autolibdz.utils.Constants.Companion.Cars_BASE_URL
 import com.clovertech.autolibdz.utils.Constants.Companion.Pricing_BASE_URL
 import com.clovertech.autolibdz.utils.Constants.Companion.Rental_BASE_URL
@@ -21,6 +24,12 @@ object RetrofitInstance {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
     }
+    private val retrofitGetCards by lazy {
+        Retrofit.Builder()
+                .baseUrl(CARD_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+    }
     private val retrofitRental by lazy {
         Retrofit.Builder()
                 .baseUrl(Rental_BASE_URL)
@@ -37,4 +46,12 @@ object RetrofitInstance {
                 .build()
     }
 
+    val api : PayApi by lazy {
+        retrofitGetCards.create(PayApi::class.java)
+    }
+    val subApi:PayApi by lazy {
+        Retrofit.Builder().baseUrl("http://54.37.87.85:5020/subscription/").addConverterFactory(
+                GsonConverterFactory.create()).build().create(PayApi::class.java)
+
+    }
 }

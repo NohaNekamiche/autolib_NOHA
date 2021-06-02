@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.clovertech.autolibdz.APIs.Couroutines
+import com.clovertech.autolibdz.DataClass.paymentInfo
 
 import com.clovertech.autolibdz.repository.CardsRepository
 import com.clovertech.autolibdz.ui.card.Card
@@ -12,8 +13,8 @@ import kotlinx.coroutines.Job
 
 class ViewModelCards(private val repository: CardsRepository): ViewModel()  {
     private lateinit var job: Job
-    private val myResponse= MutableLiveData<List<Card>>()
-    val userCards: LiveData<List<Card>>
+    private val myResponse= MutableLiveData<List<paymentInfo>>()
+    val userCards: LiveData<List<paymentInfo>>
         get() = myResponse
     fun getCards(){
         job=Couroutines.ioThenMain(

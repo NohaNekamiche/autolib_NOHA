@@ -26,5 +26,10 @@
             android:icon="@drawable/ic_baseline_payment_24"
             android:iconTint="@color/black"
             android:title="@string/menu_card" />
+        <item
+            android:id="@+id/nav_sub"
+            android:icon="@drawable/ic_baseline_payment_24"
+            android:iconTint="@color/black"
+            android:title="Subscription" />
     </group>
 </menu>

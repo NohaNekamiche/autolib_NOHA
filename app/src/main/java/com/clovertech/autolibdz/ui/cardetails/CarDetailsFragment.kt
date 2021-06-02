@@ -33,6 +33,7 @@ class CarDetailsFragment : Fragment() {
 
     private lateinit var carDetailViewModel: CarDetailsViewModel
     private lateinit var rentalViewModel: RentalViewModel
+
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -70,7 +71,7 @@ class CarDetailsFragment : Fragment() {
             val t=LocalTime.now()
             val d=LocalDate.now()
             Toast.makeText(context,"id $id",Toast.LENGTH_LONG).show()
-            val rental=
+         /*   val rental=
                     id?.let {
                         Rental(0,26, it,date_time,LocalTime.now().toString(),d.plusDays(2).toString()+" "+t.toString(),
                             t.toString(),d.plusDays(2).toString()+" "+t.toString(),t.toString(),"jour",
@@ -92,11 +93,11 @@ class CarDetailsFragment : Fragment() {
                     Log.e("Push",response.code().toString())
                     Toast.makeText(requireContext(),"Alert",Toast.LENGTH_SHORT).show()
                 }
-            })
+            })*/
 
-        /*    val bundle = bundleOf("id" to id,"img" to img,"model" to model, "hr" to uni_hr, "jr" to uni_jr,
+         val bundle = bundleOf("id" to id,"img" to img,"model" to model, "hr" to uni_hr, "jr" to uni_jr,
             "brand" to brand)
-            view?.findNavController()?.navigate(R.id.action_nav_listcar_to_nav_slideshow,bundle)*/
+            view?.findNavController()?.navigate(R.id.action_nav_listcar_to_nav_slideshow,bundle)
 
 
         }
