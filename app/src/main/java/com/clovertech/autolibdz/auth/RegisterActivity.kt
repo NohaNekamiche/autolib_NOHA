@@ -1,6 +1,6 @@
 package com.clovertech.autolibdz.auth
 
-import `view-model`.RegisterViewModel
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,9 +10,11 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.clovertech.autolibdz.R
+import com.clovertech.autolibdz.ViewModel.RegisterViewModel
 import com.clovertech.autolibdz.auth.fragments.Register1Fragment
 import com.clovertech.autolibdz.auth.fragments.Register2Fragment
 import com.clovertech.autolibdz.auth.fragments.Register3Fragment
+import com.clovertech.autolibdz.utils.RetrofitInst
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.date_picker_spinner_mode.*
 import kotlinx.android.synthetic.main.fragment_register1.*
@@ -24,7 +26,7 @@ import model.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import utils.RetrofitInstance
+
 
 class RegisterActivity : AppCompatActivity()  , View.OnClickListener {
 
@@ -86,7 +88,7 @@ class RegisterActivity : AppCompatActivity()  , View.OnClickListener {
 
     fun register() {
         Toast.makeText(this, "Entered here ${model.user.value!!.nom}", Toast.LENGTH_SHORT).show()
-        RetrofitInstance.registrationApi.registerUser(model.user.value!!).enqueue(object : Callback<User> {
+        RetrofitInst.registrationApi.registerUser(model.user.value!!).enqueue(object : Callback<User> {
             override fun onFailure(call: Call<User>, t: Throwable) {
                 Toast.makeText(this@RegisterActivity, "Register failed.", Toast.LENGTH_SHORT).show()
                 Log.e("error", t.localizedMessage)
@@ -107,7 +109,7 @@ class RegisterActivity : AppCompatActivity()  , View.OnClickListener {
 
                         val locataire = Locataire(it, "", "", "", "", "")
 
-                        RetrofitInstance.registrationApi.registerLocataire(locataire).enqueue(object : Callback<Locataire> {
+                        RetrofitInst.registrationApi.registerLocataire(locataire).enqueue(object : Callback<Locataire> {
                             override fun onFailure(call: Call<Locataire>, t: Throwable) {
                                 Toast.makeText(this@RegisterActivity, "Register failed.", Toast.LENGTH_SHORT).show()
                                 Log.e("error", t.localizedMessage)

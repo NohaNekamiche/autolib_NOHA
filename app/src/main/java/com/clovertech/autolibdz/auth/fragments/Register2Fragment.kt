@@ -1,6 +1,6 @@
 package com.clovertech.autolibdz.auth.fragments
 
-import `view-model`.RegisterViewModel
+
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
@@ -14,6 +14,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
 import com.clovertech.autolibdz.R
+import com.clovertech.autolibdz.ViewModel.RegisterViewModel
 import kotlinx.android.synthetic.main.fragment_register2.view.*
 
 class Register2Fragment : Fragment() , View.OnClickListener{

@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.clovertech.autolibdz.utils.RetrofitInst
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -34,7 +35,7 @@ import model.Borne
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import utils.RetrofitInstance
+
 
 
 class HomeFragment : Fragment() , OnMapReadyCallback , GoogleMap.OnMarkerClickListener , View.OnClickListener {
@@ -136,7 +137,7 @@ class HomeFragment : Fragment() , OnMapReadyCallback , GoogleMap.OnMarkerClickLi
         )
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(algeria, 5f))
 
-        val call = RetrofitInstance.borneApi.getBornes()
+        val call = RetrofitInst.borneApi.getBornes()
         call.enqueue(object: Callback<List<Borne>> {
             override fun onFailure(call: Call<List<Borne>>, t: Throwable) {
                 t.printStackTrace()
