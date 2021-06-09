@@ -15,7 +15,7 @@ import com.clovertech.autolibdz.DataClass.paymentInfo
 import com.clovertech.autolibdz.R
 import kotlinx.android.synthetic.main.fragment_card.*
 
-class CardAdapter(val context: Context, var data: List<paymentInfo>,var fragmentManager: FragmentManager,
+class CardsAdapter(val context: Context, var data: List<paymentInfo>,var fragmentManager: FragmentManager,
                   var amount:String,var idrental:String): RecyclerView.Adapter<MyViewHolder>(){
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
             return MyViewHolder(LayoutInflater.from(context).inflate(R.layout.card_item, parent, false))

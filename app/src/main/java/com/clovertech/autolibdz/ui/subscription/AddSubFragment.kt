@@ -66,7 +66,7 @@ class AddSubFragment :  BottomSheetDialogFragment() {
             var idSpinner=spinner.selectedItemPosition
             Toast.makeText(context,"you entered $idSpinner",Toast.LENGTH_SHORT).show()
 
-            val subscriptionRequest= SubscriptionRequest(1,idSpinner)
+            val subscriptionRequest= SubscriptionRequest(11,idSpinner)
             viewModel.addSub(subscriptionRequest)
             viewModel.SubResponse.observe(viewLifecycleOwner, Observer { response ->
                 if (response.isSuccessful) {
@@ -95,7 +95,7 @@ class AddSubFragment :  BottomSheetDialogFragment() {
 
                     Toast.makeText(
                             context,
-                            "echec",
+                            "lE TENANT A UNE CARTE DEJA EXISTE",
                             Toast.LENGTH_SHORT
                     ).show()
                 }

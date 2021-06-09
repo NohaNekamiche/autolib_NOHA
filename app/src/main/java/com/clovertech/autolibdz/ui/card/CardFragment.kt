@@ -62,7 +62,7 @@ class CardFragment : Fragment() {
             list_card.also {
                 it.layoutManager=LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                it.adapter= CardAdapter(requireContext(),cardsList,fragmentManager,amount,id)
+                it.adapter= CardsAdapter(requireContext(),cardsList,fragmentManager,amount,id)
             }
         })
         add_card.setOnClickListener {

@@ -52,8 +52,8 @@ class ConfirmPayFragment : BottomSheetDialogFragment() {
             val idRental= arguments?.getString("idRental").toString()
             val type=arguments?.getString("type").toString()
             println("paymentId is"+paymentId)
-            Toast.makeText(context,amount,Toast.LENGTH_LONG).show()
-            val pay = Pay(paymentId,amount,idRental,type)
+            //Toast.makeText(context,amount,Toast.LENGTH_LONG).show()
+            val pay = Pay(paymentId,"1900","10",type)
 
             viewModel.pay(pay)
             viewModel.PayResponse.observe(viewLifecycleOwner, Observer { response ->
