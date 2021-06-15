@@ -57,12 +57,13 @@ class CarDetailsFragment : Fragment() {
         val uni_hr=arguments?.getInt("hr")
         val uni_jr=arguments?.getInt("jr")
         val brand=arguments?.getString("brand")
-        price_hr.text= "prix unitaire par heur"+uni_hr.toString()
-        price_jr.text="prix unitaire par jour"+uni_jr.toString()
+        price_hr.text= "prix unitaire par heur :"+uni_hr.toString()
+        price_jr.text="prix unitaire par jour :"+uni_jr.toString()
         val repository = RentalRepository()
         val factory = RentalViewModelFactory(repository)
         rentalViewModel = ViewModelProvider(this,factory)
                 .get(RentalViewModel::class.java)
+        eng_val.text=model
         button.setOnClickListener {view->
             val date_time=DateTimeFormatter
                     .ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")
@@ -71,6 +72,7 @@ class CarDetailsFragment : Fragment() {
             val t=LocalTime.now()
             val d=LocalDate.now()
             Toast.makeText(context,"id $id",Toast.LENGTH_LONG).show()
+
          /*   val rental=
                     id?.let {
                         Rental(0,26, it,date_time,LocalTime.now().toString(),d.plusDays(2).toString()+" "+t.toString(),

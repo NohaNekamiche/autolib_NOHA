@@ -8,43 +8,31 @@
     android:background="@drawable/white_rectangle_elt">
 
 
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search"
         android:layout_width="301dp"
         android:layout_height="49dp"
         android:background="@drawable/search_input"
         android:drawableEnd="@drawable/ic_baseline_search_24"
         android:hint="@string/search"
-        android:textSize="15sp"
         android:textAlignment="center"
+        app:iconifiedByDefault="false"
+        app:queryBackground="@null"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.27"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.061" />
 
-    <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/imageFilterView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
-        app:layout_constraintStart_toEndOf="@+id/autoCompleteTextView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.081"
-        app:srcCompat="@drawable/filter" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_cars"
-        android:layout_width="361dp"
-        android:layout_height="556dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="356dp"
+        android:layout_height="533dp"
+        android:layout_marginTop="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

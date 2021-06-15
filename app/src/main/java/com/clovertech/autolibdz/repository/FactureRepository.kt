@@ -7,4 +7,6 @@ import com.clovertech.autolibdz.APIs.SafeFactureRequest
 
 class FactureRepository( private val apiFactures : FactureApi) : SafeFactureRequest(){
     suspend fun getFactures()=ApiFactureRequest{apiFactures.getFactures()}
+
+    suspend fun geBillByID(id:Int)=ApiFactureRequest{apiFactures.getBillByID(id)}
 }

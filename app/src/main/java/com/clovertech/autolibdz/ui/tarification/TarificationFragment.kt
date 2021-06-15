@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -37,6 +38,7 @@ class TarificationFragment : Fragment(){
     var days = 0
     var totalprice = 0
     var idrental=-1
+    lateinit var type:String
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -63,26 +65,75 @@ class TarificationFragment : Fragment(){
         val factory = RentalViewModelFactory(repository)
         rentalViewModel = ViewModelProvider(this,factory)
                 .get(RentalViewModel::class.java)
-        plus.setOnClickListener {
-            var d:Int=  duree.text.toString().toInt()
-            d += 1
-            days=d
-            duree.setText(d.toString())
-            totalprice=(d* uni_jr!!)
-            total.setText(totalprice.toString())
-        }
-        moins.setOnClickListener {
-            var d:Int=  duree.text.toString().toInt()
-            if(d-1>=0){
-                d -= 1
-                days=d
-                totalprice=(d* uni_jr!!)
-                duree.setText(d.toString())
-                total.setText(totalprice.toString())
+        //choix de cards
+        card_choix.adapter=ArrayAdapter<String>(requireActivity(),android.R.layout.simple_list_item_1,cardslist)
+        card_choix.onItemSelectedListener=object :AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
             }
-            else{
-                Toast.makeText(activity,"Vous pouvez pas Avoir une durée < 0",Toast.LENGTH_SHORT).show()
-            }}
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                type=cardslist.get(p2)
+            }
+
+        }
+        //tyoe de paiement :)
+        type_spinner.adapter=ArrayAdapter<String>(requireActivity(),android.R.layout.simple_list_item_1,typepaiement
+        )
+        type_spinner.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+              if(typepaiement.get(p2)=="jour"){
+                  plus.setOnClickListener {
+                      var d:Int=  duree.text.toString().toInt()
+                      d += 1
+                      days=d
+                      duree.setText(d.toString())
+                      totalprice=(d* uni_jr!!)
+                      total.setText(totalprice.toString())
+                  }
+                  moins.setOnClickListener {
+                      var d:Int=  duree.text.toString().toInt()
+                      if(d-1>=0){
+                          d -= 1
+                          days=d
+                          totalprice=(d* uni_jr!!)
+                          duree.setText(d.toString())
+                          total.setText(totalprice.toString())
+                      }
+                      else{
+                          Toast.makeText(activity,"Vous pouvez pas Avoir une durée < 0",Toast.LENGTH_SHORT).show()
+                      }}
+              }
+                else{
+                  plus.setOnClickListener {
+                      var d:Int=  duree.text.toString().toInt()
+                      d += 1
+                      days=d
+                      duree.setText(d.toString())
+                      totalprice=(d* uni_hr!!)
+                      total.setText(totalprice.toString())
+                  }
+                  moins.setOnClickListener {
+                      var d:Int=  duree.text.toString().toInt()
+                      if(d-1>=0){
+                          d -= 1
+                          days=d
+                          totalprice=(d* uni_hr!!)
+                          duree.setText(d.toString())
+                          total.setText(totalprice.toString())
+                      }
+                      else{
+                          Toast.makeText(activity,"Vous pouvez pas Avoir une durée < 0",Toast.LENGTH_SHORT).show()
+                      }}
+              }
+            }
+
+        }
+
         pay.setOnClickListener{
             val date_time= if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 DateTimeFormatter
@@ -98,7 +149,7 @@ class TarificationFragment : Fragment(){
             val rental=
                     id?.let {
                         Rental(0,27, it,date_time,LocalTime.now().toString(),d.plusDays(2).toString()+" "+t.toString(),
-                                t.toString(),d.plusDays(2).toString()+" "+t.toString(),t.toString(),"jour",
+                                t.toString(),d.plusDays(2).toString()+" "+t.toString(),t.toString(),type,
                                 1,1,"active")
                     }
 

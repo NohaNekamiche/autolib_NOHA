@@ -1,6 +1,7 @@
 package com.clovertech.autolibdz.APIs
 
 import com.clovertech.autolibdz.DataClasses.Bill
+import com.clovertech.autolibdz.DataClasses.DownResponse
 import com.clovertech.autolibdz.DataClasses.Facture
 import com.clovertech.autolibdz.DataClasses.Vehicle
 import com.clovertech.autolibdz.ui.card.Card
@@ -27,4 +28,6 @@ interface FactureApi {
 
         }
     }
+    @GET("download/{idBill}")
+    suspend fun getBillByID(@Path("idBill") idBill : Int): Response<DownResponse>
 }

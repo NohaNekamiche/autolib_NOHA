@@ -5,9 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -17,8 +15,12 @@ import com.clovertech.autolibdz.R
 import com.clovertech.autolibdz.ui.cardetails.CarDetailsFragment
 
 
-class MyCarAdapter(val context: Context, var data: List<Vehicle>): RecyclerView.Adapter<MyHolder>(){
+class MyCarAdapter(val context: Context, var data: List<Vehicle>): RecyclerView.Adapter<MyCarAdapter.MyHolder>(),
+        Filterable{
 
+    var carsListFiltered: ArrayList<Vehicle> = ArrayList()
+
+    private var onNothingFound: (() -> Unit)? = null
     fun setCarList(cars:List<Vehicle>){
         this.data=cars.toMutableList()
         notifyDataSetChanged()
@@ -64,24 +66,52 @@ class MyCarAdapter(val context: Context, var data: List<Vehicle>): RecyclerView.
 
     }
 
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            private val filterResults = FilterResults()
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                carsListFiltered.clear()
+                if (constraint.isNullOrBlank()) {
+                    carsListFiltered.addAll(data)
+                } else {
+                    val filterPattern = constraint.toString().toLowerCase().trim { it <= ' ' }
+                    for (item in 0..data.size) {
+                        if (data[item].vehiclemodel!!.toLowerCase().contains(filterPattern) ||
+                                data[item].vehiclebrand!!.toLowerCase().contains(filterPattern) ||
+                                data[item].vehicletype!!.toLowerCase().contains(filterPattern)) {
+                            carsListFiltered.add(data[item])
+                        }
+                    }
+                }
+                return filterResults.also {
+                    it.values = carsListFiltered
+                }
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                if (carsListFiltered.isNullOrEmpty())
+                    onNothingFound?.invoke()
+                notifyDataSetChanged()
+
+            }
+        }
+    }
+
+
+   inner class MyHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val marque = view.findViewById<TextView>(R.id.marque) as TextView
+        val prix = view.findViewById<TextView>(R.id.prix) as TextView
+        val img = view.findViewById<ImageView>(R.id.car_img) as ImageView
+        val details = view.findViewById<Button>(R.id.details) as Button
+
+    }
 
 
 }
 
-private fun ImageView.setImageResource(image: String) {
-
-}
-
-
-class MyHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val marque=view.findViewById<TextView>(R.id.marque) as TextView
-    val prix=view.findViewById<TextView>(R.id.prix) as TextView
-    val img=view.findViewById<ImageView>(R.id.car_img) as ImageView
-    val details=view.findViewById<Button>(R.id.details) as Button
 
 
 
-}
 
 
 /*private fun replaceFragment(fragment: Fragment) {
